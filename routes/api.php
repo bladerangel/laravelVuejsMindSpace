@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/quote', 'QuoteController@postQuote');
+Route::get('/quotes', 'QuoteController@getQuotes');
+Route::put('/quote/{id}', 'QuoteController@putQuote');
+Route::delete('/quote/{id}', 'QuoteController@deleteQuote');
