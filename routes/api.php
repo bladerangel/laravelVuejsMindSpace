@@ -17,7 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/quote', 'QuoteController@postQuote');
-Route::get('/quotes', 'QuoteController@getQuotes');
-Route::put('/quote/{id}', 'QuoteController@putQuote');
-Route::delete('/quote/{id}', 'QuoteController@deleteQuote');
+Route::post('/quote', 'QuoteController@postQuote')->middleware('jwt.auth');
+Route::get('/quotes', 'QuoteController@getQuotes')->middleware('jwt.auth');
+Route::put('/quote/{id}', 'QuoteController@putQuote')->middleware('jwt.auth');
+Route::delete('/quote/{id}', 'QuoteController@deleteQuote')->middleware('jwt.auth');
+Route::post('/user', 'UserController@signup');
+Route::post('/user/signin', 'UserController@signin');
